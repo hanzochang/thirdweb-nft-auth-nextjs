@@ -30,12 +30,24 @@ const Home: NextPage = () => {
             <ConnectWallet auth={{ loginOptional: false }} />
           </Flex>
         </Box>
-        <Flex justifyContent="center" alignItems="center" h="100vh">
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          h="100vh"
+          textAlign="center"
+        >
           Logged in
+          <br />
+          あなたはNFTを保有しているのでこのページが見えています
         </Flex>
         <Box position="fixed" w="100%" bottom={0}>
-          <Flex alignItems="center" justifyContent="center" mb={6}>
-            <Box fontSize={12}>
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            mb={6}
+            flexDirection="column"
+          >
+            <Box fontSize={12} textAlign="center">
               <a
                 href={`https://goerli.etherscan.io/token/${process.env.NEXT_PUBLIC_NFT_ADDRESS}`}
                 style={{ textDecoration: 'underline' }}
@@ -43,6 +55,7 @@ const Home: NextPage = () => {
                 {process.env.NEXT_PUBLIC_NFT_ADDRESS}
               </a>
               のNFTを保有する人のみ表示されています。
+              <br />
             </Box>
           </Flex>
         </Box>

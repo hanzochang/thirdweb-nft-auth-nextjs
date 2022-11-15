@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import { ConnectWallet, useUser } from '@thirdweb-dev/react'
 import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { getUser } from '../auth.config'
 import { Seo } from '../partials/index/Seo'
 
@@ -35,6 +36,39 @@ const Home: NextPage = () => {
         <Flex justifyContent="center" alignItems="center" h="100vh">
           <ConnectWallet auth={{ loginOptional: false }} />
         </Flex>
+        <Box position="fixed" w="100%" bottom={0}>
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            mb={6}
+            flexDirection="column"
+          >
+            <Box fontSize={12}>
+              <a
+                href={`https://goerli.etherscan.io/token/${process.env.NEXT_PUBLIC_NFT_ADDRESS}`}
+                style={{ textDecoration: 'underline' }}
+              >
+                {process.env.NEXT_PUBLIC_NFT_ADDRESS}
+              </a>
+              のNFTを保有する人のみ
+              <Link href="/">
+                <a style={{ textDecoration: 'underline' }}>トップページ</a>
+              </Link>
+              に遷移できます。
+            </Box>
+            <Box
+              as="a"
+              pt={2}
+              href="https://nftdrop-example.hanzochang.com/"
+              target="_blank"
+              rel="noreferrer"
+              fontSize={12}
+              opacity={0.5}
+            >
+              MINT はこちらから
+            </Box>
+          </Flex>
+        </Box>
       </main>
     </>
   )
